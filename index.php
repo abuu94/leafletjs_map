@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -47,53 +47,52 @@
 
 
 </div>
-
-<script>
-
-	var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-
-	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		id: 'mapbox/streets-v11',
-		tileSize: 512,
-		zoomOffset: -1
-	}).addTo(mymap);
-
-	//gecode start here
-	var searchControl = L.esri.Geocoding.geosearch.addTo(mymap);
-
-	//Add layergroup to searchControl
-	var results = L.layerGroup.addTo(mymap);
-
-
-	searchControl.on('results',function(data){
-		result.clearLayers();
-
-			for (var i= data.results.length -1; i>-0;i--){
-
-			results.addLayer(L.marker(data.results[i].latlng));
-
-			}
-
-		}
-	)
-	//gecode end here
-</script>
-
-
-
-
-
-
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+ 
+<script>
+jQuery(document).ready(function() {
+
+var mymap = L.map('mapid').setView([35.505, -79.09], 4);
+
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+	maxZoom: 18,
+	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+		'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+		'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	id: 'mapbox/streets-v11',
+	tileSize: 512,
+	zoomOffset: -1
+}).addTo(mymap);
+
+
+//Start loading data from data.php and generate markers
+$.ajax({
+    type: "POST",
+    url: "data.php",
+    contentType: "application/json; charset=utf-8",
+    dataType: "json",
+    //on success loading data create maker and add to the map
+    success: function (data) {
+        for (var key in data){
+            if (data.hasOwnProperty(key)){
+				L.marker([data[key].latitude, data[key].longitude]).bindPopup(data[key].name).addTo(mymap);
+            }
+        }
+    },
+    //on error log error
+    error: function (erro) {
+        console.log(erro)
+    }
+});
+//End loading data
+		
+});
+
+
+</script>
   </body>
 </html>
