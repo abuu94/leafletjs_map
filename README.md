@@ -13,3 +13,12 @@ mapbox for web app: https://docs.mapbox.com/help/how-mapbox-works/web-apps/
 
 mapbox Attributions:https://docs.mapbox.com/help/how-mapbox-works/attribution/
 
+
+mapbox getting started:https://docs.mapbox.com/studio-manual/help/
+
+1.https://docs.mapbox.com/help/tutorials/add-points-pt-1/
+
+2.https://docs.mapbox.com/help/tutorials/add-points-pt-2/
+
+3.https://docs.mapbox.com/help/tutorials/add-points-pt-3/
+
