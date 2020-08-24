@@ -22,3 +22,16 @@ mapbox getting started:https://docs.mapbox.com/studio-manual/help/
 
 3.https://docs.mapbox.com/help/tutorials/add-points-pt-3/
 
+Leaflet machine routing:
+
+Basic: http://www.liedman.net/leaflet-routing-machine/tutorials/basic-usage/
+
+Addresse & geocoding: http://www.liedman.net/leaflet-routing-machine/tutorials/geocoders/
+http://www.liedman.net/leaflet-routing-machine/api/
+
+
+http://www.liedman.net/leaflet-routing-machine/tutorials/
+
+https://www.liedman.net/leaflet-routing-machine/tutorials/alternative-routers/
+
+
